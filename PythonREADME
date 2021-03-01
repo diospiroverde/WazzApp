@@ -1,1 +1,0 @@
- exec(path.resolve(__dirname, "..", "..","..", "notify-send.py") + ' -r ' + id.toString().replace(/(\r\n|\n|\r)/gm, "") +  ' -u critical --action default:close -i ' + path.resolve(__dirname, "..","..","icon", "logo32.png") + ' -t 0 "wazzapp - Messages Waiting";npm start');
