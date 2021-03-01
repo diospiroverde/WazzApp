@@ -13,7 +13,7 @@ Option to start the appication minimized\
 Mark all messages as read\
 Mark all messages as unread\
 Archive all chats\
-Copy images and search for text on Google by right clicking on chat\
+Copy images and search for text on Google by right clicking on chat
 
 
 **Licences**
