@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    const { ipcRenderer } = require('electron')
+    ipcRenderer.on('sound', (event, src) => {
+        const aud = new Audio();
+        aud.autoplay = true;
+        aud.src = src;
+    })
+    ipcRenderer.on('notification', (event, opt) => {
+        let n = new Notification(opt.title, {
+            body:opt.body,
+            icon:opt.icon
+        });
+        n.onclick = function (evt) {
+            ipcRenderer.send(`notification_${opt.id}:click`, true);
+        }
+        n.close = function () {
+            ipcRenderer.send(`notification_${opt.id}:close`);
+        }
+        n.onclose = function () {
+            ipcRenderer.send(`notification_${opt.id}:close`);
+        }
+        return n;
+    })
+</script>
+</body>
+</html>

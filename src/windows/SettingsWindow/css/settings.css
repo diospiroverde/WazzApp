@@ -1,0 +1,190 @@
+html {
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 15px Arial, sans-serif;
+  height: calc(100vh - 10px);
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container hr {
+  width: 100%;
+}
+
+.configs {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.tabsHeaders {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tab {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tabsHeaders {
+  list-style: none;
+  padding: 10px;
+  margin: 0px;
+}
+
+.tabsHeaders li {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
+.tabsHeaders li.active {
+  background-color: #ffffff;
+  border-bottom: none;
+}
+
+.tabsHeaders li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 80%;
+}
+
+.row-100 {
+  width: 100%;
+}
+
+.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #AAA;
+  -webkit-box-shadow: 2px 2px 2px 0px #BBB;
+          box-shadow: 2px 2px 2px 0px #BBB;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 100ms all;
+  transition: 100ms all;
+  background-color: #ffffff;
+}
+
+.btn:hover {
+  background-color: #EEE;
+}
+
+.btn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.label-form {
+  text-align: right;
+  width: 50%;
+  padding: 0 10px;
+}
+
+.tiny {
+  font-size: smaller;
+  color: #888;
+}
+
+.input-form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 10px;
+  outline: none;
+}
+
+.input-form[type="checkbox"] {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 17px;
+  height: 17px;
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+.input-form[type="checkbox"]:active, .input-form[type="checkbox"]:checked:active {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-form[type="checkbox"]:checked {
+  background-color: #0387df;
+  border: 1px solid #ffffff;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  color: #99a1a7;
+}
+
+.input-form[type="checkbox"]:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  color: #ffffff;
+}
+/*# sourceMappingURL=settings.css.map */

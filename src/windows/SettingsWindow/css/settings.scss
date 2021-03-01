@@ -1,0 +1,126 @@
+html{
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: calc(100vh - 10px);
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    hr{
+        width: 100%;
+    }
+}
+.configs{
+    flex: 1;
+}
+.tabsHeaders{
+    display: flex;
+}
+.tab{
+    display: none;
+    flex-direction: column;
+}
+.tabsHeaders{
+    list-style: none;
+    padding: 10px;
+    margin: 0px;
+    li{
+        user-select: none;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.3);
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border: 1px solid #888;
+        cursor: pointer;
+        &.active{
+            background-color: #ffffff;
+            border-bottom: none;
+        }
+        &:hover{
+            background-color: rgba(0,0,0,0.1);
+        }
+    }
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+.row-100{
+    width: 100%;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+.space-around{
+    justify-content: space-around;
+}
+.btn{
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #AAA;
+    box-shadow: 2px 2px 2px 0px #BBB;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: 100ms all;
+    background-color: #ffffff;
+    &:hover{
+        //box-shadow: 4px 4px 2px 0px #BBB;
+        background-color: #EEE;
+    }
+    &:active{
+        box-shadow: none;
+    }
+    
+}
+.label-form{
+    text-align: right;
+    width: 50%;
+    padding: 0 10px;
+}
+.tiny{
+    font-size: smaller;
+    color: #888;
+}
+.input-form{
+    flex: 1;
+    margin: 0 10px;
+    outline: none;
+}
+.input-form[type="checkbox"]{
+    flex: none;
+    width: 17px;
+    height: 17px;
+    -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	display: inline-block;
+    position: relative;
+    outline: none;
+    &:active, &:checked:active {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+    }
+    &:checked {
+        background-color: #0387df;
+        border: 1px solid #ffffff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+        color: #99a1a7;
+    }
+    &:checked:after {
+        content: '\2714';
+        font-size: 14px;
+        position: absolute;
+        top: 0px;
+        left: 1px;
+        color: #ffffff;
+    }
+}
