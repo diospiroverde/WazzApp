@@ -31,7 +31,7 @@ ipcRenderer.on("settings", (evt, sett) => {
             switch (element.type) {
                 case "CHECKBOX":
                     divTag.append(
-                        $("<div>")
+                        $("<div style='margin-bottom:5px'>")
                             .addClass("row")
                             .append(
                                 $("<label>")
@@ -107,7 +107,7 @@ ipcRenderer.on("settings", (evt, sett) => {
                     break;
                 case "SELECT":
                     divTag.append(
-                        $("<div>")
+                        $("<div style='margin-bottom:5px'>")
                             .addClass("row")
                             .append(
                                 $("<label>")
