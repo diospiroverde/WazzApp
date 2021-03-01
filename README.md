@@ -6,13 +6,13 @@ Unofficial Client of WhatsApp for Linux
 
 **Features**
 
-Option for Sticky Notifications on supported systems
+Sticky Notifications on supported systems
 
-Option to turn on and off window flashing on new messages (useful to avoid double notifications in gnome)
+Turn on and off window flashing on new messages (useful to avoid double notifications in gnome)
 
-Option to hide the the Menu Bar on start
+Hide the the Menu Bar on start
 
-Option to start the appication minimized
+Start the appication minimized
 
 Mark all messages as read
 
