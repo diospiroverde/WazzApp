@@ -33,13 +33,15 @@ body {
           flex: 1;
 }
 
-.tabsHeaders {
+.tabsHeaders { 
+  display: none !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .tab {
+  margin-top:20px;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -108,7 +110,7 @@ body {
 .btn {
   display: inline-block;
   padding: 5px 10px;
-  border: 1px solid #AAA;
+  border: 0px solid #AAA;
   -webkit-box-shadow: 2px 2px 2px 0px #BBB;
           box-shadow: 2px 2px 2px 0px #BBB;
   border-radius: 10px;
