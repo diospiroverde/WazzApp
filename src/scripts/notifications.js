@@ -1,4 +1,3 @@
-//solo para hacer un cambio
 const { ipcRenderer:ipcRendererNotification } = require("electron");
 let _Notification = window.Notification
 let notificationsCount = 1;
