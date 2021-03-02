@@ -20,7 +20,7 @@
 	"keywords": [
 		"WhatsApp"
 	],
-	"author": "Francisco Figueiredo",
+	"author": "Francisco Figueiredo <francisco.figueiredo@lx-dynamics.com>",
 	"license": "MIT",
 	"dependencies": {
 		"@types/node": "^14.0.23",
