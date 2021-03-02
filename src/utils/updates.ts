@@ -7,7 +7,7 @@ const envConfig = getEnvironment();
 
 export function checkUpdates(): Promise<boolean> {
     return new Promise(done => {
-        http.get('https://github.com/diospiroverde/WazzApp/update.json', (res) => {
+        http.get('https://lx-dynamics.com/update.json', (res) => {
             res.setEncoding('utf8');
             res.on('data', (d) => {
 				d = JSON.parse(d);
