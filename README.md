@@ -23,7 +23,7 @@ Archive all chats
 Copy images and search for text on Google by right clicking on chat
 
 
-**Licences**
+**Licenses**
 
 This application is based and inspired in the code written by Gustavo Gonzalez, author of the excellent WhatsDesk application.
 
