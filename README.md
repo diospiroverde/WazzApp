@@ -8,7 +8,7 @@ Unofficial Client of WhatsApp for Linux
 
 Sticky Notifications on supported systems
 
-Toggle window flashing on new messages on or off (useful to avoid double notifications in gnome)
+Toggle window flashing on new messages (useful to avoid double notifications in gnome)
 
 Hide the the Menu Bar on start
 
