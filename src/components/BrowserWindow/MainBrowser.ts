@@ -50,23 +50,31 @@ export class MainBrowser extends EventEmitter {
             }
         });
 
-        //sticky notification event handling
-        var self = this;
-        var dbus = require('dbus-native');
-                var sessionBus = dbus.sessionBus();
-                sessionBus.getService('org.freedesktop.Notifications').getInterface(
-                '/org/freedesktop/Notifications',
-                'org.freedesktop.Notifications', function(err, notifications) {                                 
-                      notifications.on('ActionInvoked', function() {          
-                          if(arguments[0] == notificationid &&  arguments[1] == 'default')                          
-                            self.win.show();                      
-                      });
+        try
+        {
+            //sticky notification event handling
+            var self = this;
+            var dbus = require('dbus-native');
+                    var sessionBus = dbus.sessionBus();
+                    sessionBus.getService('org.freedesktop.Notifications').getInterface(
+                    '/org/freedesktop/Notifications',
+                    'org.freedesktop.Notifications', function(err, notifications) {                                 
+                        notifications.on('ActionInvoked', function() {          
+                            if(arguments[0] == notificationid &&  arguments[1] == 'default')                          
+                                self.win.show();                      
+                        });
 
-                      notifications.on('NotificationClosed', function() {  
-                        if(arguments[0] == notificationid)   
-                            notificationid = 0;                                         
-                      });
-                });
+                        notifications.on('NotificationClosed', function() {  
+                            if(arguments[0] == notificationid)   
+                                notificationid = 0;                                         
+                        });
+                    });
+                }
+
+        catch(exception)
+        {
+            console.log(exception);
+        }
 
         if(!this.win){
             throw new Error("Browser window is not create");
@@ -102,13 +110,20 @@ export class MainBrowser extends EventEmitter {
 
     CloseNotification(): void {
         
-        var dbus = require('dbus-native');
-        var sessionBus = dbus.sessionBus();
-        sessionBus.getService('org.freedesktop.Notifications').getInterface(
-        '/org/freedesktop/Notifications',
-        'org.freedesktop.Notifications', function(err, notifications) {                                              
-              notifications.CloseNotification(notificationid);             
-            });   
+        try
+        {
+            var dbus = require('dbus-native');
+            var sessionBus = dbus.sessionBus();
+            sessionBus.getService('org.freedesktop.Notifications').getInterface(
+            '/org/freedesktop/Notifications',
+            'org.freedesktop.Notifications', function(err, notifications) {                                              
+                notifications.CloseNotification(notificationid);             
+                });   
+        }
+        catch(exception)
+        {
+            console.log(exception);
+        }
 
     }
     
@@ -120,28 +135,34 @@ export class MainBrowser extends EventEmitter {
         this.emit('notification:new'); 
 
         if(Settings.stickyNotifications.value) {
+            try
+            {
+                // sends sticky notification
+                var self = this;      
+                var thisapp = this.app;
+                setTimeout(function () {
 
-            // sends sticky notification
-            var self = this;      
-            var thisapp = this.app;
-            setTimeout(function () {
-
-                 if(!self.win.isFocused() || !self.win.isVisible())
-                {                                                     
-                    var dbus = require('dbus-native');
-                    var sessionBus = dbus.sessionBus();
-                    var home = thisapp.getPath('home');                  
-                    sessionBus.getService('org.freedesktop.Notifications').getInterface(
-                    '/org/freedesktop/Notifications',
-                    'org.freedesktop.Notifications', function(err, notifications) {                                                       
-                        notifications.Notify('wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open wazzapp'], [['urgency', ['n', 2]],['image-path', ['s', path.resolve(home,'.wazzapp','logo.png') ]]],  0, function(err, id) {
-                        notificationid = id;
-                        });
-                    });                           
-                }
- 
-             
-            },300); // wait for 300 miliseconds to let whatsapp webapi notification be sent.
+                    if(!self.win.isFocused() || !self.win.isVisible())
+                    {                                                     
+                        var dbus = require('dbus-native');
+                        var sessionBus = dbus.sessionBus();
+                        var home = thisapp.getPath('home');                  
+                        sessionBus.getService('org.freedesktop.Notifications').getInterface(
+                        '/org/freedesktop/Notifications',
+                        'org.freedesktop.Notifications', function(err, notifications) {                                                       
+                            notifications.Notify('wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open wazzapp'], [['urgency', ['n', 2]],['image-path', ['s', path.resolve(home,'.wazzapp','logo.png') ]]],  0, function(err, id) {
+                            notificationid = id;
+                            });
+                        });                           
+                    }
+    
+                
+                },300); // wait for 300 miliseconds to let whatsapp webapi notification be sent.
+            }
+            catch(exception)
+            {
+                console.log(exception); 
+            }
 
         }
                      
