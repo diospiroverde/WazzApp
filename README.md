@@ -1,6 +1,8 @@
 # WazzApp
 Unofficial Client of WhatsApp for Linux
 
+**Download**
+
 ![image](https://user-images.githubusercontent.com/79201496/109441124-4c2b7c00-7a2c-11eb-9bf8-042224ebea77.png)
 
 ![image](https://www.debian.org/logos/openlogo-50.png)
