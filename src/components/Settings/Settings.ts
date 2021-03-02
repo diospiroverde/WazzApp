@@ -183,11 +183,19 @@ export function getSettings(): Settings {
 export function getwazzappPath(): string {
     let home = app.getPath('home');
     if (home.indexOf("/snap/") != -1) {
-        home = home.substring(0, home.indexOf("/wazzapp/") + 11) + "current";
+        home = home.substring(0, home.indexOf("/wazzapp/") + 9) + "current";
     }
     home = path.resolve(home, ".wazzapp");
     if (!fs.existsSync(home)) {
         fs.mkdirSync(home);
+        try
+        {
+        fs.copyFileSync( path.resolve(__dirname, "..","..","icon", "logo.png"), path.resolve(home,'logo.png') )
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
     }
     return home;
 }
