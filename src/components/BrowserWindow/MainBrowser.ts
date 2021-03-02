@@ -122,17 +122,18 @@ export class MainBrowser extends EventEmitter {
 
             // sends sticky notification
             var self = this;      
-
+            var thisapp = this.app;
             setTimeout(function () {
 
                  if(!self.win.isFocused() || !self.win.isVisible())
                 {                                                     
                     var dbus = require('dbus-native');
                     var sessionBus = dbus.sessionBus();
+                    var home = thisapp.getPath('home');                  
                     sessionBus.getService('org.freedesktop.Notifications').getInterface(
                     '/org/freedesktop/Notifications',
                     'org.freedesktop.Notifications', function(err, notifications) {                                                       
-                        notifications.Notify('wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open wazzapp'], [['urgency', ['n', 2]],['image-path', ['s', path.resolve(__dirname, "..","..","icon", "logo.png")]]],  0, function(err, id) {
+                        notifications.Notify('wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open wazzapp'], [['urgency', ['n', 2]],['image-path', ['s', path.resolve(home,'.wazzapp','logo.png') ]]],  0, function(err, id) {
                         notificationid = id;
                         });
                     });                           
@@ -218,7 +219,7 @@ export class MainBrowser extends EventEmitter {
                 label: 'View',
                 submenu: [
                     {
-                        label: 'Show/Hide Menu',
+                        label: 'Toggle Menu',
                         accelerator: "CommandOrControl+h",
                         click: _ => {
                             this.win.setMenuBarVisibility(!this.win.isMenuBarVisible())
@@ -237,7 +238,7 @@ export class MainBrowser extends EventEmitter {
                         buttons: ['OK'],
                         defaultId: 1,
                         title: 'About',
-                        message: 'WazzApp V0.1',
+                        message: 'WazzApp V 0.0.1',
                         icon: path.resolve(__dirname, "..","..","icon", "logo.png")                 
                       
                       };
