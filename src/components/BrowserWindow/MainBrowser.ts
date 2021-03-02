@@ -10,6 +10,7 @@ import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import { executionAsyncId } from "async_hooks";
 import { NotificationSound } from "../../windows/UtilWindow/UtilsWindow";
 import { Notify } from '../../utils/notifications';
+import packa from '../../../package.json';
 
 
 //const
@@ -238,7 +239,7 @@ export class MainBrowser extends EventEmitter {
                         buttons: ['OK'],
                         defaultId: 1,
                         title: 'About',
-                        message: 'WazzApp V 0.0.1',
+                        message: 'WazzApp ' + packa.version,
                         icon: path.resolve(__dirname, "..","..","icon", "logo.png")                 
                       
                       };
