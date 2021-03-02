@@ -34,11 +34,11 @@ app.on("ready", _ => {
         })
     }
     
-    // checkUpdates().then(hasUpdate => {
-    //     if (hasUpdate) {
-    //         Notify({ title: "Update", body: "Update avalible", url: "https://github.com/diospiroverde/WazzApp/" });
-    //     }
-    // })
+    checkUpdates().then(hasUpdate => {
+        if (hasUpdate) {
+            Notify({ title: "Update", body: "Update avalible", url: "https://github.com/diospiroverde/WazzApp/" });
+        }
+    })
 
     initEvents();
 })
