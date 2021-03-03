@@ -43,7 +43,7 @@ If you're running a debian based distro you may download and install the provide
 
 You may also run the provided application image. You will be prompted at start for menu integration.
 
-You may install node.js, npm, git and then clone the code and run it.\
+You may install node.js, npm, git and then clone the code and run it.
 
  For this you should run:\
  git clone https://github.com/diospiroverde/WazzApp \
