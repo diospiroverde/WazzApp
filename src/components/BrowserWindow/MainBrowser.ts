@@ -77,7 +77,7 @@ export class MainBrowser extends EventEmitter {
         }
 
         if(!this.win){
-            throw new Error("Browser window is not create");
+            throw new Error("Browser window was not created");
         }        
 
         if (Settings.skipTaskbar.value) {
