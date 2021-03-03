@@ -39,7 +39,7 @@ sudo apt-get install xfce4-notifyd ; sudo apt-get purge notify-osd
 
 This will replace notify-osd with xfce4-notifyd supporting clickable and stacked notifications.
 
-Please consider how this may affect you other applications.
+Please consider how this may affect your other applications.
 
 Tray icon clicks are ignored by Electron on Linux, so the expected behavior of double clicking the tray icon to show the
 application is not supported, you will have to single click the tray icon and click on "Show WazzApp".
