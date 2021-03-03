@@ -13,6 +13,10 @@ Unofficial Client of WhatsApp for Linux
 
 [Application Image](https://lx-dynamics.com/wazzapp%200.1.1.AppImage)
 
+![image](https://lx-dynamics.com/redhat.png)
+
+[rpm Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.1.x86_64.rpm) (untested)
+
 **Features**
 
 Sticky Notifications on supported systems
