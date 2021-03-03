@@ -42,7 +42,7 @@ This will replace notify-osd with xfce4-notifyd supporting clickable and stacked
 Please consider how this may affect you other applications.
 
 Tray icon clicks are ignored by Electron on Linux, so the expected behavior of double clicking the tray icon to show the
-application is not supported, you wil have to single click the tray icon and click on "Show Wazzapp".
+application is not supported, you will have to single click the tray icon and click on "Show WazzApp".
 
 **Licenses**
 
