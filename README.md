@@ -46,7 +46,7 @@ You may also run the provided application image. You will be prompted at start f
 You may install node.js, npm, git and then clone the code and run it.
 
  For this you should run:\
- git clone https://github.com/diospiroverde/WazzApp \
+ git clone https://github.com/diospiroverde/WazzApp.git \
  cd WazzApp-main\
  npm i\
  npm start
