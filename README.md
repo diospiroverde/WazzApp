@@ -50,6 +50,8 @@ You may install node.js, npm, git and then clone the code and run it.\
  cd WazzApp-main\
  npm i\
  npm start
+ 
+ There is an ***untested*** package for redhad based distros, if you happen to install it, please tell me how it went.
 
 **Issues**
 
