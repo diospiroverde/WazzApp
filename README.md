@@ -32,7 +32,7 @@ Copy images and search for text on Google by right clicking the chat
 **Issues**
 
 Ubuntu Unity does not support sticky notifications by default, because NotifyOSD notifications are meant to be unclickable.
-If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command:
+If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command and then rebooting:
 
 sudo apt-get install xfce4-notifyd ; sudo apt-get purge notify-osd
 
