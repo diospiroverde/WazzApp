@@ -15,7 +15,7 @@ Unofficial Client of WhatsApp for Linux
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[rpm Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.1.x86_64.rpm) (untested)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.1.x86_64.rpm) (untested)
 
 **Features**
 
