@@ -5,7 +5,7 @@ Unofficial Client of WhatsApp for Linux
 
 **Download**
 
-![image](https://www.debian.org/logos/openlogo-50.png)
+![image](https://lx-dynamics.com/debian.png)
 
 [Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.1_amd64.deb)
 
