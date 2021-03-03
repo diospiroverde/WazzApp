@@ -45,6 +45,9 @@ You may install node.js, npm, git and then clone the code and run it.\
 
 **Issues**
 
+This application only runs on 64-bit systems. You may compile it for 32-bit, but you have to drop the sticky notifications option, as the
+libraries used are not compatible with 32-bit.
+
 Ubuntu Unity does not support sticky notifications by default, because NotifyOSD notifications are meant to be unclickable.
 It will show an alert box instead.
 If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command and then rebooting:
