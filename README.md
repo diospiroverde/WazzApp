@@ -39,7 +39,8 @@ Copy images and search for text on Google by right clicking the chat
 
 **How to Install**
 
-If you're running a debian based distro you may download and install the provided .deb package. Make sure to install any required dependencies.
+If you're running a debian based distro you may download and install the provided .deb package. Make sure to install any required dependencies.\
+Depends: gconf2, gconf-service, libnotify4, libappindicator1, libxtst6, libnss3, libxss1
 
 You may also run the provided application image. You will be prompted at start for menu integration.
 
