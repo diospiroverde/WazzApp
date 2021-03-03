@@ -29,6 +29,19 @@ Archive all chats
 
 Copy images and search for text on Google by right clicking the chat
 
+**Issues**
+
+Ubuntu Unity does not support sticky notifications by default, because NotifyOSD notifications are meant to be unclickable.
+If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command:
+
+sudo apt-get install xfce4-notifyd ; sudo apt-get purge notify-osd
+
+This will replace notify-osd with xfce4-notifyd supporting clickable and stacked notifications.
+
+Please consider how this may affect you other applications.
+
+Tray icon clicks are ignored by Electron on Linux, so the expected behavior of double clicking the tray icon to show the
+application is not supported, you wil have to single click the tray icon and click on "Show Wazzapp".
 
 **Licenses**
 
