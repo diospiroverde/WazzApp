@@ -47,10 +47,10 @@ You may also run the provided application image. You will be prompted at start f
 You may install node.js, npm, git and then clone the code and run it.
 
  For this you should run:\
- git clone https://github.com/diospiroverde/WazzApp.git \
+ _git clone https://github.com/diospiroverde/WazzApp.git \
  cd WazzApp\
  npm i\
- npm start
+ npm start_
  
  There is an ***untested*** package for Red Hat based distros, if you happen to install it, please tell me how it went.
 
@@ -60,7 +60,7 @@ Ubuntu Unity does not support sticky notifications by default, because NotifyOSD
 It will show an alert box instead.
 If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command and then rebooting:
 
-sudo apt-get install xfce4-notifyd ; sudo apt-get purge notify-osd
+_sudo apt-get install xfce4-notifyd ; sudo apt-get purge notify-osd_
 
 This will replace notify-osd with xfce4-notifyd supporting clickable and stacked notifications.
 
