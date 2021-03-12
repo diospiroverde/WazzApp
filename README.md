@@ -46,6 +46,10 @@ Depends: gconf2, gconf-service, libnotify4, libappindicator1, libxtst6, libnss3,
 
 You may also run the provided application image. You will be prompted at start for menu integration.
 
+You can install via snapd at https://snapcraft.io/wazzapp.
+
+If you already have snapd just run _sudo snap install wazzapp_
+
 You may install node.js, npm, git and then clone the code and run it.
 
  For this you should run:\
