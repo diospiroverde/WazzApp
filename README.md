@@ -58,6 +58,8 @@ You may install node.js, npm, git and then clone the code and run it.
 
 **Issues**
 
+If you install the application via snap store, you won't get the functionality of showing the application on notification click.This happens due to snapscraft confinement rules.
+
 Ubuntu Unity does not support sticky notifications by default, because NotifyOSD notifications are meant to be unclickable.
 It will show an alert box instead.
 If you really want sticky notifications on Ubuntu Unity you may work around this by running the following command and then rebooting:
