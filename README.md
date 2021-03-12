@@ -13,7 +13,7 @@ Unofficial Client of WhatsApp for Linux
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[Application Image](https://lx-dynamics.com/wazzapp%200.1.1.AppImage)
+[Application Image](https://lx-dynamics.com/wazzapp-0.1.1.AppImage)
 
 ![image](https://lx-dynamics.com/redhat.png)
 
