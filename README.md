@@ -48,7 +48,7 @@ You may also run the provided application image. You will be prompted at start f
 
 You can install via snapd at https://snapcraft.io/wazzapp.
 
-If you already have snapd just run _sudo snap install wazzapp_
+If you already have snapd installed on your system just run _sudo snap install wazzapp_ from the command line.
 
 You may install node.js, npm, git and then clone the code and run it.
 
