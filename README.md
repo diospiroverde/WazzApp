@@ -7,6 +7,8 @@ Unofficial Client of WhatsApp for Linux
 
 [![Foo](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-black.png)](https://snapcraft.io/wazzapp)
 
+![image](https://lx-dynamics.com/debian.png)
+
 [Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.1_amd64.deb)
 
 [Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.1.1_i386.deb)
