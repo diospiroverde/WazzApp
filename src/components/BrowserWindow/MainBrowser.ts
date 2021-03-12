@@ -11,6 +11,7 @@ import { executionAsyncId } from "async_hooks";
 import { NotificationSound } from "../../windows/UtilWindow/UtilsWindow";
 import { Notify } from '../../utils/notifications';
 import packa from '../../../package.json';
+import { Variant } from "dbus-next";
 
 
 //const
@@ -50,31 +51,7 @@ export class MainBrowser extends EventEmitter {
             }
         });
 
-        try
-        {
-            //sticky notification event handling
-            var self = this;
-            var dbus = require('dbus-native');
-                    var sessionBus = dbus.sessionBus();
-                    sessionBus.getService('org.freedesktop.Notifications').getInterface(
-                    '/org/freedesktop/Notifications',
-                    'org.freedesktop.Notifications', function(err, notifications) {                                 
-                        notifications.on('ActionInvoked', function() {          
-                            if(arguments[0] == notificationid &&  arguments[1] == 'default')                          
-                                self.win.show();                      
-                        });
-
-                        notifications.on('NotificationClosed', function() {  
-                            if(arguments[0] == notificationid)   
-                                notificationid = 0;                                         
-                        });
-                    });
-                }
-
-        catch(exception)
-        {
-            console.log(exception);
-        }
+       this.SetEvents();
 
         if(!this.win){
             throw new Error("Browser window was not created");
@@ -112,13 +89,22 @@ export class MainBrowser extends EventEmitter {
         
         try
         {
-            var dbus = require('dbus-native');
-            var sessionBus = dbus.sessionBus();
-            sessionBus.getService('org.freedesktop.Notifications').getInterface(
-            '/org/freedesktop/Notifications',
-            'org.freedesktop.Notifications', function(err, notifications) {                                              
-                notifications.CloseNotification(notificationid);             
-                });   
+
+            let dbus = require('dbus-next');
+            let Message = dbus.Message;                
+            let bus = dbus.sessionBus();
+                  
+            let methodCall = new Message({
+                destination: 'org.freedesktop.Notifications',
+                path: '/org/freedesktop/Notifications',
+                interface: 'org.freedesktop.Notifications',
+                member: 'CloseNotification',
+                signature: 'u',
+                body: [notificationid]
+            });
+
+            bus.send(methodCall);
+           
         }
         catch(exception)
         {
@@ -127,7 +113,44 @@ export class MainBrowser extends EventEmitter {
 
     }
     
-    Notification(): void {
+    SetEvents = async() => {
+        
+        try
+        {
+
+            var self = this;
+            let dbus = require('dbus-next');                      
+            let bus = dbus.sessionBus();
+        
+            bus.getProxyObject('org.freedesktop.Notifications', '/org/freedesktop/Notifications').then((obj) => {
+                let monitor = obj.getInterface('org.freedesktop.Notifications');
+            
+            
+                monitor.on('ActionInvoked', (id, action) => {             
+                    if(id == notificationid && action == 'default')
+                        self.win.show();
+
+                });
+
+                monitor.on('NotificationClosed', (id) => {            
+                    if(id == notificationid)
+                    notificationid = 0;   
+
+                });
+                   
+            });
+
+
+        }
+
+        catch(exception)
+        {
+            console.log(exception);
+        }
+
+    }
+
+    Notification = async() => {
 
         this.CloseNotification();
         if(Settings.flashWindow.value) 
@@ -139,25 +162,34 @@ export class MainBrowser extends EventEmitter {
             {
                 // sends sticky notification
                 var self = this;      
-                var thisapp = this.app;
-                setTimeout(function () {
+                var thisapp = this.app;                
 
                     if(!self.win.isFocused() || !self.win.isVisible())
-                    {                                                     
-                        var dbus = require('dbus-native');
-                        var sessionBus = dbus.sessionBus();
-                        var home = thisapp.getPath('home');                  
-                        sessionBus.getService('org.freedesktop.Notifications').getInterface(
-                        '/org/freedesktop/Notifications',
-                        'org.freedesktop.Notifications', function(err, notifications) {                                                       
-                            notifications.Notify('wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open wazzapp'], [['urgency', ['n', 2]],['image-path', ['s', path.resolve(home,'.wazzapp','logo.png') ]]],  0, function(err, id) {
-                            notificationid = id;
-                            });
-                        });                           
+                    {   
+                        const delay = ms => new Promise(res => setTimeout(res, ms));
+                        await delay(300);  
+                        var home = thisapp.getPath('home');
+                        let dbus = require('dbus-next');
+                        let Message = dbus.Message;                
+                        let bus = dbus.sessionBus();
+                              
+                        let methodCall = new Message({
+                            destination: 'org.freedesktop.Notifications',
+                            path: '/org/freedesktop/Notifications',
+                            interface: 'org.freedesktop.Notifications',
+                            member: 'Notify',
+                            signature: 'susssasa{sv}i',
+                            body: ['wazzapp', notificationid, '', 'WazzApp', 'Messsages Waiting', ['default', 'Open WazzApp'], {'image-path': new Variant('s', path.resolve(home,'.wazzapp','logo.png')), 'urgency': new Variant('n',2)}, 0]
+                        });
+                  
+
+                        let reply = await bus.call(methodCall);
+                        
+                        notificationid = reply.body[0];
+                                        
                     }
     
-                
-                },300); // wait for 300 miliseconds to let whatsapp webapi notification be sent.
+                               
             }
             catch(exception)
             {
