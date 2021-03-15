@@ -23,21 +23,23 @@ Unofficial Client of WhatsApp for Linux
 
 **Features**
 
-Sticky Notifications on supported systems
+0.1.2 Expand contents to entire window size 
 
-Toggle window flashing on new messages (useful to avoid double notifications in gnome)
+0.1.1 Sticky Notifications on supported systems
 
-Hide the the Menu Bar on start
+0.1.1 Toggle window flashing on new messages (useful to avoid double notifications in gnome)
 
-Start the appication minimized (useful for autostart)
+0.1.1 Hide the the Menu Bar on start
 
-Mark all messages as read
+0.1.1 Start the appication minimized (useful for autostart)
 
-Mark all messages as unread
+0.1.1 Mark all messages as read
 
-Archive all chats
+0.1.1 Mark all messages as unread
 
-Copy images and search for text on Google by right clicking the chat
+0.1.1 Archive all chats
+
+0.1.1 Copy images and search for text on Google by right clicking the chat
 
 **How to Install**
 
