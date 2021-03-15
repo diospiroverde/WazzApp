@@ -99,6 +99,13 @@ export class Settings extends EventEmitter {
                 text: "Show Menu Bar",
                 tinytext: "Show the Menu Bar."
             },
+            showFull: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Use Whole Window",
+                tinytext: "Use Whole Window."
+            },
             startMinimized: {
                 section: TabSections.GENERAL,
                 type: ValueTypes.CHECKBOX,
