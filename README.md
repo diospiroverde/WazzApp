@@ -60,7 +60,7 @@ You may install node.js, npm, git and then clone the code and run it.
  npm i\
  npm start_
  
- There is an ***untested*** package for Red Hat based distros, if you happen to install it, please tell me how it went.
+There is an ***untested*** package for Red Hat based distros, if you happen to install it, please tell me how it went.
 
 **Issues**
 
