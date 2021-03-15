@@ -36,7 +36,7 @@ app.on("ready", _ => {
     
     checkUpdates().then(hasUpdate => {
         if (hasUpdate) {
-            Notify({ title: "Update", body: "Update avalible", url: "https://github.com/diospiroverde/WazzApp/" });
+            Notify({ title: "Update", body: "Update available", url: "https://github.com/diospiroverde/WazzApp/" });
         }
     })
 
