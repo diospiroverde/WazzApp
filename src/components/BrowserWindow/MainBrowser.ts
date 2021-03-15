@@ -346,6 +346,8 @@ export class MainBrowser extends EventEmitter {
         this.win.webContents.on('did-finish-load', async () => {
             await this.ScriptLoad();
             this.SendConfigs();
+            if(Settings.showFull.value)            
+                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");
         })
 
         this.win.on('focus', (event: any) => {           
@@ -387,6 +389,13 @@ export class MainBrowser extends EventEmitter {
                     }else{
                         this.win.setMenuBarVisibility(false);
                     }
+                    break;
+                case "showFull":
+                    if(value.value)                     
+                        this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");
+                    else
+                        this.win.reload();
+
                     break;
             }
         })
