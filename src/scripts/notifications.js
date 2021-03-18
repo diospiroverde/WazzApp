@@ -11,10 +11,12 @@ window.Notification = function (name, props) {
     ipcRendererNotification.send("notifications", n.__id);
     setTimeout(() => {
         n._onclick = n.onclick;
+        n.addEventListener('click', function () {
+            ipcRendererNotification.send("notification:click");
+        });
         n.onclick = function (evt) {
             const remote = require ("electron").remote;
-            remote.getCurrentWindow().show();
-            ipcRendererNotification.send("notification:click", true);
+            remote.getCurrentWindow().show();          
             if (n._onclick) n._onclick.call(this, evt);
         }
 
