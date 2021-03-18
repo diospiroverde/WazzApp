@@ -19,7 +19,7 @@ Unofficial Client of WhatsApp for Linux
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.2.x86_64.rpm) (untested)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.2.x86_64.rpm)
 
 **Features**
 
@@ -60,8 +60,6 @@ You may install node.js, npm, git and then clone the code and run it.
  npm i\
  npm start_
  
-There is an ***untested*** package for Red Hat based distros, if you happen to install it, please tell me how it went.
-
 **Issues**
 
 If you install the application via snap store, you won't get the functionality of showing the application on notification click.This happens due to snapscraft confinement rules.
