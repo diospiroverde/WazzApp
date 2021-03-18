@@ -6,6 +6,7 @@ import { checkUpdates } from './utils/updates';
 import { Notify } from './utils/notifications';
 import { getSettings } from './components/Settings/Settings';
 import { getEnvironment } from './utils/environment';
+import { isTypeOnlyImportOrExportDeclaration } from 'typescript';
 
 const envConfig = getEnvironment();
 
@@ -36,7 +37,7 @@ app.on("ready", _ => {
     
     checkUpdates().then(hasUpdate => {
         if (hasUpdate) {
-            Notify({ title: "Update", body: "Update avalible", url: "https://github.com/diospiroverde/WazzApp/" });
+            Notify({ title: "Update", body: "Update available", url: "https://github.com/diospiroverde/WazzApp/" });
         }
     })
 
@@ -55,5 +56,11 @@ function initEvents(): void {
         //TODO: Resolver doble notificacion
         //NotificationSound();
         Notify({title: "WazzApp", body: "Finished"});
+    })
+
+    ipcMain.on('notification:click', (event, arg) => {
+        //TODO: Resolver doble notificacion
+        //NotificationSound();        
+        win.show();
     })
 }
