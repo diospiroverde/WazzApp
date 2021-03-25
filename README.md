@@ -5,7 +5,7 @@ Unofficial Client of WhatsApp for Linux
 
 **Download**
 
-[![Foo](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-black.png)](https://snapcraft.io/wazzapp)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/wazzapp)
 
 ![image](https://lx-dynamics.com/debian.png)
 
