@@ -83,6 +83,12 @@ _sudo dnf install gnome-shell-extension-topicons-plus_
 
 And then enable the Topicons plus extension using Tweaks.
 
+If you need to install Tweaks just run
+
+_sudo dnf install gnome-tweak-tool_
+
+Or install it from the Software Center.
+
 Thanks to Elroy Brown for testing and troubleshooting the RPM package in Fedora.
 
 **Licenses**
