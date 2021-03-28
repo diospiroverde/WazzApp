@@ -77,6 +77,14 @@ Please consider how this may affect your other applications.
 Tray icon clicks are ignored by Electron on Linux, so the expected behavior of double clicking the tray icon to show the
 application is not supported, you will have to single click the tray icon and click on "Show WazzApp".
 
+If you are running Fedora and don't get a tray icon, you should run
+
+_sudo dnf install gnome-shell-extension-topicons-plus_
+
+And then enable the Topicons plus extension using Tweaks.
+
+Thanks to Elroy Brown for testing and troubleshooting the RPM package in Fedora.
+
 **Licenses**
 
 This application is based and inspired in the code written by Gustavo Gonzalez, author of the excellent WhatsDesk application.
