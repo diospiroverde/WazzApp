@@ -4,6 +4,12 @@
 
 ## Features 
 
+0.1.4 Low Battery warning notification
+
+0.1.4 Clear all stored data
+
+0.1.4 Clear session cache
+
 0.1.2 Expand contents to entire window size 
 
 0.1.1 Sticky Notifications on supported systems
@@ -31,21 +37,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.3_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.4_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.1.3_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.1.4_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.1.3.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.1.4.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.3.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.4.x86_64.rpm)
 
 ## How to install
 
