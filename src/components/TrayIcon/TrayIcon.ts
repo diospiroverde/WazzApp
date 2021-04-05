@@ -1,4 +1,4 @@
-import { Tray, app, Menu } from "electron";
+import { Tray, app, Menu, shell } from "electron";
 import path from 'path';
 import { MainBrowser } from "../BrowserWindow/MainBrowser";
 import { SettingWindow } from "../../windows/SettingsWindow/SettingsWindow";
@@ -37,7 +37,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             label: 'Show WazzApp', click: function () {
                 win.toogleVisibility();
             }
-        },
+        },       
         {
             label: 'Settings', click: function () {
                 SettingWindow();
@@ -46,6 +46,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         {
             label: 'Reload', click: function () {
                 win.LoadUrl();
+            }
+        },
+        {
+            label: '💗 Support Project', click: function () {
+                shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
             }
         },
         {
@@ -64,6 +69,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             }
         },
         {
+            label: 'Toggle Menu bar', click: function () {
+                win.getBrowser().setMenuBarVisibility(!win.getBrowser().isMenuBarVisible());
+            }
+        },
+        {
             label: 'Settings', click: function () {
                 SettingWindow();
             }
@@ -71,6 +81,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         {
             label: 'Reload', click: function () {
                 win.LoadUrl();
+            }
+        },
+        {
+            label: '💗 Support Project', click: function () {
+                shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
             }
         },
         {
