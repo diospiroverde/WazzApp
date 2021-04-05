@@ -10,7 +10,7 @@ export function SettingWindow() {
     window = new BrowserWindow({
         show: true,
         icon: path.join(__dirname, "..", "..", "icon", "logo.png"),
-        height: 310,
+        height: 360,
         width: 550,
         resizable: false,
         webPreferences:{
