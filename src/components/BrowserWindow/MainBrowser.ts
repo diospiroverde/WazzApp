@@ -1,4 +1,4 @@
-import { BrowserWindow, Menu, shell } from "electron";
+import { BrowserWindow, Menu, shell, webContents } from "electron";
 import path from 'path';
 import fs from 'fs';
 import { EventEmitter } from 'events';
@@ -77,7 +77,7 @@ export class MainBrowser extends EventEmitter {
         return this.win;
     }
     LoadUrl(): void {
-        this.win.loadURL("https://web.whatsapp.com?v=" + Math.floor((Math.random() * 1000) + 1).toString(), { // this is used to avoid caching
+        this.win.loadURL("https://web.whatsapp.com", {
             userAgent: this.win.webContents.getUserAgent().replace(/(Electron|wazzapp)\/([0-9\.]+)\ /gi, "").replace(/\-(beta|alfa)/gi,"")
         });
     }
@@ -270,6 +270,28 @@ export class MainBrowser extends EventEmitter {
                 ]
             },
             {
+                label: 'Session',
+                submenu: [
+                    {
+                        label: 'Clear Cache',                        
+                        // accelerator: "CommandOrControl+y",                        
+                        click: () => {
+                            this.win.webContents.session.clearCache();
+                        }
+                    },
+                    {
+                        label: 'Clear All Data',
+                        // accelerator: "CommandOrControl+d",
+                        click: async () => {
+                            await this.win.webContents.session.clearStorageData();
+                            this.reload();
+                        }
+                    }
+                   
+                  
+                ]
+            },
+            {
                 label: 'View',
                 submenu: [
                     {
@@ -289,7 +311,7 @@ export class MainBrowser extends EventEmitter {
 
                     const options = {
                         type: 'info',
-                        buttons: ['OK'],
+                        buttons: ['OK', 'Support Project'],
                         defaultId: 1,
                         title: 'About',
                         message: 'WazzApp ' + packa.version,
@@ -298,7 +320,12 @@ export class MainBrowser extends EventEmitter {
                       };
 
                     const { dialog } = require('electron')
-                    const response = dialog.showMessageBox(this.win, options);
+                    const response = dialog.showMessageBox(this.win, options).then( (data) => {
+                        if(data.response == 1)
+                        {
+                            shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
+                        }                  
+                      });
                 }
             }
         ])
@@ -342,12 +369,14 @@ export class MainBrowser extends EventEmitter {
             }
         });
 
-        //content events
+        //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             await this.ScriptLoad();
             this.SendConfigs();
+            if(Settings.batteryWarning.value)
+                this.win.webContents.executeJavaScript('{var lastTime = false; var interval = setInterval(() => {if((document.documentElement.textContent || document.documentElement.innerText).indexOf(\'Phone battery low\') > -1){ if(lastTime == false) {const { ipcRenderer:ipcRendererNotification } = require(\'electron\');ipcRendererNotification.send(\'battery-low\');lastTime = true}} else {lastTime = false }},3000)}');
             if(Settings.showFull.value)            
-                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");
+                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");            
         })
 
         this.win.on('focus', (event: any) => {           
@@ -395,7 +424,12 @@ export class MainBrowser extends EventEmitter {
                         this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");
                     else
                         this.win.reload();
-
+                    break;                    
+                case "batteryWarning":
+                    if(Settings.batteryWarning.value)
+                        this.win.webContents.executeJavaScript('{var lastTime = false; var interval = setInterval(() => {if((document.documentElement.textContent || document.documentElement.innerText).indexOf(\'Phone battery low\') > -1){ if(lastTime == false) {const { ipcRenderer:ipcRendererNotification } = require(\'electron\');ipcRendererNotification.send(\'battery-low\');lastTime = true}} else {lastTime = false }},3000)}');
+                    else
+                        this.win.reload();
                     break;
             }
         })
