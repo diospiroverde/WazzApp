@@ -120,6 +120,13 @@ export class Settings extends EventEmitter {
                 text: "Skip Taskbar",
                 tinytext: "Makes the window not show in the taskbar."
             },
+            batteryWarning: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Low Battery Warning",
+                tinytext: "Show a notification when battery is low."
+            },
             multiInstance: {
                 section: TabSections.GENERAL,
                 type: ValueTypes.CHECKBOX,
