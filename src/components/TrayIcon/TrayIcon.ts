@@ -23,7 +23,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
     })
 
     win.getBrowser().on('hide', () => { appIcon.setContextMenu(contextMenuShow); });
-    win.getBrowser().on('minimize', () => { appIcon.setContextMenu(contextMenuShow); });
+    // win.getBrowser().on('minimize', () => { appIcon.setContextMenu(contextMenuShow); });
     // win.getBrowser().on('blur', () => { appIcon.setContextMenu(contextMenuShow); });
     win.getBrowser().on('show', () => { appIcon.setContextMenu(contextMenuHide); });  
     // win.getBrowser().on('focus', () => { appIcon.setContextMenu(contextMenuHide); });
@@ -35,7 +35,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
     const contextMenuShow = Menu.buildFromTemplate([
         {
             label: 'Show WazzApp', click: function () {
-                win.toogleVisibility();
+                win.show();
             }
         },       
         {
@@ -65,7 +65,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
     const contextMenuHide = Menu.buildFromTemplate([
         {
             label: 'Hide WazzApp', click: function () {
-                win.toogleVisibility();
+                win.hide();
             }
         },
         {
