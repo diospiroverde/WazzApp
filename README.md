@@ -145,4 +145,4 @@ Thanks to Elroy Brown for testing and troubleshooting the RPM package in Fedora.
 
 This application is based and inspired in the code written by Gustavo Gonzalez, author of the excellent WhatsDesk application.
 
-This project uses app icons free for personal use from [Clipartmax](Clipartmax.com) and [Thoseicons](Thoseicons.com) under Creative Commons Licence v3.0 and modified tray icon from [EDT](EDT.im) under Creative Commons License v2.5.
+This project uses app icons free for personal use from [Clipartmax](https://www.clipartmax.com/) and [Thoseicons](https://thoseicons.com/) under Creative Commons Licence v3.0 and modified tray icon from [EDT](https://EDT.im) under Creative Commons License v2.5.
