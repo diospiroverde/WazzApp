@@ -10,13 +10,15 @@
 
 0.1.4 Clear session cache
 
+0.1.4 Toggle Menu Bar directly from system tray
+
 0.1.2 Expand contents to entire window size 
 
 0.1.1 Sticky Notifications on supported systems
 
 0.1.1 Toggle window flashing on new messages (useful to avoid double notifications in gnome)
 
-0.1.1 Hide the the Menu Bar on start
+0.1.1 Hide the Menu Bar on start
 
 0.1.1 Start the appication minimized (useful for autostart)
 
