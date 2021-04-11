@@ -6,7 +6,7 @@
 
 0.1.6 Choose betwwen monochrome and color tray icon
 
-2.1.4 Low Battery warning notification
+0.1.4 Low Battery warning notification
 
 0.1.4 Clear all stored data
 
