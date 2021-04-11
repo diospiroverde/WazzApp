@@ -4,7 +4,7 @@
 
 ## Features 
 
-0.1.6 Choose betwwen monochrome and color tray icon
+0.1.6 Choose between monochrome and colored tray icon
 
 0.1.4 Low Battery warning notification
 
