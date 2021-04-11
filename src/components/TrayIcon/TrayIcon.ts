@@ -7,18 +7,21 @@ import { getSettings } from "../Settings/Settings";
 
 let appIcon:Electron.Tray | any = null;
 
+const SettingController = getSettings();
+const Settings = SettingController.getAllConfigs();
+
 export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undefined{
     
-    appIcon = new Tray(path.resolve(__dirname, "..","..","icon", "tray-icon-off.png"));
+    appIcon = new Tray(path.resolve(__dirname, "..","..","icon", Settings.monoTray.value ? "tray-icon-off.png" : "tray-icon-off3.png"));
     
     win.on('title-updated', (title:string) => {
         appIcon.setToolTip(title);
     })
     win.on('notification:new', (title:string) => {
-        appIcon.setImage(path.resolve(__dirname, "..","..","icon", "tray-icon-on.png"))        
+        appIcon.setImage(path.resolve(__dirname, "..","..","icon", Settings.monoTray.value ? "tray-icon-on.png" : "tray-icon-on3.png"))        
     })
     win.on('notification:clear', (title:string) => {
-        appIcon.setImage(path.resolve(__dirname, "..","..","icon", "tray-icon-off.png"))
+        appIcon.setImage(path.resolve(__dirname, "..","..","icon", Settings.monoTray.value ? "tray-icon-off.png" : "tray-icon-off3.png"))
         
     })
 
@@ -49,8 +52,8 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             }
         },
         {
-            label: '💗 Support Project', click: function () {
-                shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
+            label: 'About', click: function () {
+                win.showAbout();
             }
         },
         {
@@ -84,8 +87,8 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             }
         },
         {
-            label: '💗 Support Project', click: function () {
-                shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
+            label: 'About', click: function () {
+                win.showAbout();
             }
         },
         {
@@ -97,9 +100,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         }
     ]);
 
-    const SettingController = getSettings();
-    const Settings = SettingController.getAllConfigs();
-
+    
     if(Settings.startMinimized.value)
         appIcon.setContextMenu(contextMenuShow);
     else
