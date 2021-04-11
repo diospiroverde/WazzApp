@@ -127,6 +127,13 @@ export class Settings extends EventEmitter {
                 text: "Low Battery Warning",
                 tinytext: "Show a notification when battery is low."
             },
+            monoTray: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Monochrome Tray Icon (requires restart)",
+                tinytext: "Show a Monochrome tray Icon."
+            },
             multiInstance: {
                 section: TabSections.GENERAL,
                 type: ValueTypes.CHECKBOX,
