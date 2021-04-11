@@ -308,24 +308,7 @@ export class MainBrowser extends EventEmitter {
             {
                 label: 'About',
                 click: () => {
-
-                    const options = {
-                        type: 'info',
-                        buttons: ['OK', 'Support Project'],
-                        defaultId: 1,
-                        title: 'About',
-                        message: 'WazzApp ' + packa.version,
-                        icon: path.resolve(__dirname, "..","..","icon", "logo.png")                 
-                      
-                      };
-
-                    const { dialog } = require('electron')
-                    const response = dialog.showMessageBox(this.win, options).then( (data) => {
-                        if(data.response == 1)
-                        {
-                            shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
-                        }                  
-                      });
+                   this.showAbout();
                 }
             }
         ])
@@ -347,6 +330,28 @@ export class MainBrowser extends EventEmitter {
     show(): void {
         this.win.show();
     }
+
+    showAbout() : void
+    {
+        const options = {
+            type: 'info',
+            buttons: ['OK', 'Support Project'],
+            defaultId: 1,
+            title: 'About',
+            message: 'WazzApp ' + packa.version,
+            icon: path.resolve(__dirname, "..","..","icon", "logo.png")                 
+          
+          };
+
+        const { dialog } = require('electron')
+        const response = dialog.showMessageBox(this.win, options).then( (data) => {
+            if(data.response == 1)
+            {
+                shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
+            }                  
+          });
+    }
+
     EventsInit(): void {
         //window events
         this.win.on('page-title-updated', (evt: any, title: string) => {
