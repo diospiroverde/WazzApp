@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.1.7 Spell Checker supporting many languages
+
 0.1.6 Choose between monochrome and colored tray icon
 
 0.1.4 Low Battery warning notification
@@ -41,21 +43,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.6_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.1.7_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.1.6_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.1.7_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.1.6.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.1.7.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.6.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.1.7.x86_64.rpm)
 
 ## How to install
 
