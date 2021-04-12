@@ -46,7 +46,7 @@ export class MainBrowser extends EventEmitter {
             webPreferences: {
                 experimentalFeatures: true,
                 nodeIntegration: true,
-                spellcheck: false,
+                spellcheck: Settings.spellCheck.value ? true : false, 
                 /* partition:"persist:main" */
             }
         });
@@ -139,6 +139,14 @@ export class MainBrowser extends EventEmitter {
                 });
                    
             });
+
+            var languages = this.win.webContents.session.availableSpellCheckerLanguages;
+            for(let lang of languages)            
+                 Settings.lang.options.push({key:lang,text:lang});        
+
+            if(Settings.spellCheck.value)
+                if(Settings.lang.value)
+                    this.win.webContents.session.setSpellCheckerLanguages([Settings.lang.value.toString()])                 
 
 
         }
