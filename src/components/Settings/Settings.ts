@@ -17,16 +17,27 @@ export class Settings extends EventEmitter {
     private loadSetting(): void {
         let configDir: string = getwazzappPath();
         let data = {}
+        let loaddefaults = false;
         try {
             
             if(fs.existsSync(path.resolve(configDir, "settings.json"))){
                 data = JSON.parse(fs.readFileSync(path.resolve(configDir, "settings.json"), "utf8"));
             }
+            else
+                loaddefaults = true;
             
         } catch (ex) {
             
         }
         this.loadDefaultConfigValue(data);
+
+
+        if(loaddefaults)
+        {
+            this.saveConfig("stickyNotifications", true);   
+            this.saveConfig("showMenuBar", true);  
+            this.saveConfig("showFull", true);
+        } 
     }
     private saveSetting(): void {
         let configDir: string = getwazzappPath();
@@ -133,6 +144,21 @@ export class Settings extends EventEmitter {
                 value: false,
                 text: "Monochrome Tray Icon (requires restart)",
                 tinytext: "Show a Monochrome tray Icon."
+            },
+            spellCheck: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Spell Check (requires restart)",
+                tinytext: "Use Spell Checking."
+            },
+            lang: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.SELECT,
+                value: "",
+                text: "Language",
+                options:[                   
+                ]
             },
             multiInstance: {
                 section: TabSections.GENERAL,
