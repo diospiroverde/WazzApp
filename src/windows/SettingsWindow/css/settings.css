@@ -7,6 +7,8 @@ html {
 
 body {
   font: 15px Arial, sans-serif;
+  color: white;
+  font-weight: bold;
   height: calc(100vh - 10px);
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -122,6 +124,7 @@ body {
   -webkit-transition: 100ms all;
   transition: 100ms all;
   background-color: #ffffff;
+  color: black;
 }
 
 .btn:hover {
