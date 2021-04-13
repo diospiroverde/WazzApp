@@ -124,6 +124,20 @@ export class Settings extends EventEmitter {
                 text: "Start Minimized",
                 tinytext: "Start Minimized."
             },
+            hideNotifications: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Hide Notifications",
+                tinytext: "Hide Notifications."
+            },
+            muteAudio: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Mute Audio",
+                tinytext: "Mute Audio."
+            },
             skipTaskbar: {
                 section: TabSections.GENERAL,
                 type: ValueTypes.CHECKBOX,
@@ -156,7 +170,7 @@ export class Settings extends EventEmitter {
                 section: TabSections.GENERAL,
                 type: ValueTypes.SELECT,
                 value: "",
-                text: "Language",
+                text: "Language (requires restart)",
                 options:[                   
                 ]
             },
