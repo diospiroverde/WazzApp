@@ -1,7 +1,6 @@
 import { Tray, app, Menu, shell } from "electron";
 import path from 'path';
 import { MainBrowser } from "../BrowserWindow/MainBrowser";
-import { SettingWindow } from "../../windows/SettingsWindow/SettingsWindow";
 import { getSettings } from "../Settings/Settings";
 
 
@@ -43,7 +42,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         },       
         {
             label: 'Settings', click: function () {
-                SettingWindow();
+                win.showSettings();
             }
         },
         {
@@ -78,7 +77,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         },
         {
             label: 'Settings', click: function () {
-                SettingWindow();
+                win.showSettings();
             }
         },
         {
