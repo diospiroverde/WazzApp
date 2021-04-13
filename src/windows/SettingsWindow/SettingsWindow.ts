@@ -1,26 +1,29 @@
 import { ipcMain, BrowserWindow } from 'electron';
+import { electron } from 'node:process';
 import path from 'path';
 import { getSettings } from '../../components/Settings/Settings';
 
-
 var window: BrowserWindow | undefined;
 
-export function SettingWindow() {
+export function SettingWindow(win: BrowserWindow) {
     let settings = getSettings();
     window = new BrowserWindow({
-        show: true,
+        show: false,
         icon: path.join(__dirname, "..", "..", "icon", "logo.png"),
-        height: 420,
-        width: 550,
+        height: 620,
+        width: 640,
+        parent: win,
+        modal: true,
         resizable: false,
         webPreferences:{
             nodeIntegration:true
         }
     })
     window.setMenu(null);
-    window.once("close", () => {
+    window.once("close", () => {     
+        ipcMain.emit('settings-closed');
         window = undefined;
-        ipcMain.removeAllListeners("send");
+        ipcMain.removeAllListeners("send");        
 
     })
     
@@ -29,6 +32,10 @@ export function SettingWindow() {
     }
 
     window.setSkipTaskbar(true);
+
+    window.once('ready-to-show', () => {
+        window.show();
+      })
 
     window.loadURL('file://' + path.join(__dirname, 'settings.html'))
 
