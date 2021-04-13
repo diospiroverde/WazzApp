@@ -19,7 +19,7 @@ const SettingController = getSettings();
 const Settings = SettingController.getAllConfigs();
 
 var notificationid = 0;
-
+var showingSettings;
 
 export class MainBrowser extends EventEmitter {
     private win: Electron.BrowserWindow | undefined;
@@ -77,7 +77,7 @@ export class MainBrowser extends EventEmitter {
         return this.win;
     }
     LoadUrl(): void {
-        this.win.loadURL("https://web.whatsapp.com", {
+        this.win.loadURL("https://web.whatsapp.com/", {
             userAgent: this.win.webContents.getUserAgent().replace(/(Electron|wazzapp)\/([0-9\.]+)\ /gi, "").replace(/\-(beta|alfa)/gi,"")
         });
     }
@@ -85,6 +85,19 @@ export class MainBrowser extends EventEmitter {
         this.LoadUrl();
     }
 
+    showSettings() : void {
+        if(!showingSettings)
+        {
+            showingSettings = true;
+            SettingWindow(this.win);
+           
+        }
+    }
+
+    settingsClosed() : void {
+        showingSettings = false;
+    }
+   
     CloseNotification(): void {
         
         try
@@ -262,8 +275,8 @@ export class MainBrowser extends EventEmitter {
                     {
                         label: 'Settings',                        
                         accelerator: "CommandOrControl+s",                        
-                        click() {
-                            SettingWindow();
+                        click: () => {
+                            this.showSettings() 
                         }
                     },
                     {
@@ -385,11 +398,18 @@ export class MainBrowser extends EventEmitter {
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             await this.ScriptLoad();
+
+            if(Settings.hideNotifications.value)           
+                        
             this.SendConfigs();
             if(Settings.batteryWarning.value)
                 this.win.webContents.executeJavaScript('{var lastTime = false; var interval = setInterval(() => {if((document.documentElement.textContent || document.documentElement.innerText).indexOf(\'Phone battery low\') > -1){ if(lastTime == false) {const { ipcRenderer:ipcRendererNotification } = require(\'electron\');ipcRendererNotification.send(\'battery-low\');lastTime = true}} else {lastTime = false }},3000)}');
             if(Settings.showFull.value)            
                 this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");            
+            if(Settings.hideNotifications.value)
+                this.win.webContents.executeJavaScript('delete window.Notification');  
+            if(Settings.muteAudio.value)
+                this.win.webContents.setAudioMuted(true);
         })
 
         this.win.on('focus', (event: any) => {           
@@ -444,6 +464,20 @@ export class MainBrowser extends EventEmitter {
                     else
                         this.win.reload();
                     break;
+                case "hideNotifications":
+                    if(Settings.hideNotifications.value)
+                        this.win.webContents.executeJavaScript('delete window.Notification');                          
+                    else
+                        this.win.reload();
+                    break;
+                case "muteAudio":
+                    if(Settings.muteAudio.value)
+                        this.win.webContents.setAudioMuted(true);
+                    else
+                        this.win.webContents.setAudioMuted(false);
+
+                    break;
+                
             }
         })
     }
