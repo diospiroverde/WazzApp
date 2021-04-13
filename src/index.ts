@@ -64,6 +64,12 @@ function initEvents(): void {
         win.show();
     })
 
+    ipcMain.on('settings-closed', (event, arg) => {
+        //TODO: Resolver doble notificacion
+        //NotificationSound();        
+        win.settingsClosed();
+    })
+
     ipcMain.on('battery-low', (event, arg) => {
         //TODO: Resolver doble notificacion
         //NotificationSound();        
