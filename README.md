@@ -148,6 +148,7 @@ $ sudo dnf install gnome-tweak-tool
 Or install it from the Software Center.
 
 Thanks to Elroy Brown for testing and troubleshooting the RPM package in Fedora.
+
 Thanks to basil08 https://github.com/basil08 for his improvements to this readme file.
 
 ## Licenses
