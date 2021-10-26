@@ -174,6 +174,13 @@ export class Settings extends EventEmitter {
                 options:[                   
                 ]
             },
+            disableShortcuts: {
+                section: TabSections.GENERAL,
+                type: ValueTypes.CHECKBOX,
+                value: false,
+                text: "Disable Shortcuts (requires restart)",
+                tinytext: "Disable Shortcuts",                  
+            },
             multiInstance: {
                 section: TabSections.GENERAL,
                 type: ValueTypes.CHECKBOX,
