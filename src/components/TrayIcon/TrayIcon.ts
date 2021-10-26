@@ -25,7 +25,7 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
     })
 
     win.getBrowser().on('hide', () => { appIcon.setContextMenu(contextMenuShow); });
-    // win.getBrowser().on('minimize', () => { appIcon.setContextMenu(contextMenuShow); });
+    win.getBrowser().on('minimize', () => { appIcon.setContextMenu(contextMenuShow); });
     // win.getBrowser().on('blur', () => { appIcon.setContextMenu(contextMenuShow); });
     win.getBrowser().on('show', () => { appIcon.setContextMenu(contextMenuHide); });  
     // win.getBrowser().on('focus', () => { appIcon.setContextMenu(contextMenuHide); });
