@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.2.1 Disable Shortcuts
+
 0.1.8 Hide Notifications
 
 0.1.8 Mute Audio
