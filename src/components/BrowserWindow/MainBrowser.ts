@@ -6,7 +6,7 @@ import { SettingWindow } from "../../windows/SettingsWindow/SettingsWindow";
 import { getSettings } from "../Settings/Settings";
 import { SettingConfigInterface, ValueSettings } from "../Settings/SettingInterface";
 import { exec } from "child_process";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import { collapseTextChangeRangesAcrossMultipleVersions, textSpanIsEmpty } from "typescript";
 import { executionAsyncId } from "async_hooks";
 import { NotificationSound } from "../../windows/UtilWindow/UtilsWindow";
 import { Notify } from '../../utils/notifications';
@@ -70,7 +70,7 @@ export class MainBrowser extends EventEmitter {
 
         if(!Settings.showMenuBar.value)
             this.win.setMenuBarVisibility(false);
-
+        
     }
     
     getBrowser(): Electron.BrowserWindow{
@@ -159,8 +159,7 @@ export class MainBrowser extends EventEmitter {
 
             if(Settings.spellCheck.value)
                 if(Settings.lang.value)
-                    this.win.webContents.session.setSpellCheckerLanguages([Settings.lang.value.toString()])                 
-
+                    this.win.webContents.session.setSpellCheckerLanguages([Settings.lang.value.toString()])                                       
 
         }
 
@@ -242,7 +241,7 @@ export class MainBrowser extends EventEmitter {
 
                     {
                         label: 'Mark all as read',
-                        accelerator: "CommandOrControl+m",
+                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+m" : "",
                         click: () => {
                            Notify({ title: "WazzApp", body: "Marking all messages as read" });                    
                            this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._38M1B\';selectorforcontact = \'[aria-selected*="true"]\';var selectedlist = document.querySelectorAll(selectorforcontact);messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message, event));await timer(300);}for (const message1 of selectedlist) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message1.firstChild, event));await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);finished();})();}');
@@ -251,7 +250,7 @@ export class MainBrowser extends EventEmitter {
 
                     {
                         label: 'Mark all as unread',
-                        accelerator: "CommandOrControl+u",
+                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+u" : "",
                         click: () => {
                         Notify({ title: "WazzApp", body: "Marking all messages as unread" });
                            this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._2Z4DV\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = \'[aria-label*="Mark as unread"]\';for (const message2 of document.querySelectorAll(selector2)) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message2.parentElement, event));}await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);finished();})()}');
@@ -260,7 +259,7 @@ export class MainBrowser extends EventEmitter {
 
                     {
                         label: 'Archive all',
-                        accelerator: "CommandOrControl+f",
+                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+f" : "",
                         click: () => {
                         Notify({ title: "WazzApp", body: "Archiving all messages" });
                            this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._2Z4DV\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = \'[aria-label*="Archive chat"]\';for (const message2 of document.querySelectorAll(selector2)) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message2.parentElement, event));}await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);finished();})()}');
@@ -398,16 +397,18 @@ export class MainBrowser extends EventEmitter {
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             await this.ScriptLoad();
-                                          
+                                      
             this.SendConfigs();
             if(Settings.batteryWarning.value)
                 this.win.webContents.executeJavaScript('{var lastTime = false; var interval = setInterval(() => {if((document.documentElement.textContent || document.documentElement.innerText).indexOf(\'Phone battery low\') > -1){ if(lastTime == false) {const { ipcRenderer:ipcRendererNotification } = require(\'electron\');ipcRendererNotification.send(\'battery-low\');lastTime = true}} else {lastTime = false }},3000)}');
             if(Settings.showFull.value)            
-                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_3QfZd').length) {document.getElementsByClassName('_3QfZd')[0].style.width = 'auto'; document.getElementsByClassName('_3QfZd')[0].style.height = '100%'; document.getElementsByClassName('_3QfZd')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");            
+                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (document.getElementsByClassName('_1XkO3').length) {document.getElementsByClassName('_1XkO3')[0].style.width = 'auto'; document.getElementsByClassName('_1XkO3')[0].style.height = '100%'; document.getElementsByClassName('_1XkO3')[0].style.top = '2px'; clearInterval(checkExist);}}, 100);");            
             if(Settings.hideNotifications.value)
                 this.win.webContents.executeJavaScript('delete window.Notification');  
             if(Settings.muteAudio.value)
                 this.win.webContents.setAudioMuted(true);
+            if(Settings.theme.value == 'dark')            
+                this.win.webContents.executeJavaScript("var checkExist = setInterval(function() {if (!document.getElementsByClassName('dark').length) {var body = document.body;body.classList.add('dark')}}, 100);");                       
         })
 
         this.win.on('focus', (event: any) => {           
