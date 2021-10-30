@@ -1,7 +1,7 @@
 {
 	"name": "wazzapp",
-	"version": "0.2.1",
-	"betaVersion": "0.2.1",
+	"version": "0.2.2",
+	"betaVersion": "0.2.2",
 	"description": "unofficial whatsapp client for linux ",
 	"main": "electron-build/src/index.js",
 	"homepage": "https://github.com/diospiroverde/WazzApp",
@@ -33,20 +33,19 @@
 		"fs": "0.0.1-security",
 		"jquery": "^3.5.1",
 		"semver": "^5.7.1",
-		"ts-node": "^8.10.2",
-		"tsc": "^2.0.3"
+		"ts-node": "^8.10.2"
 	},
 	"devDependencies": {
 		"@jest-runner/electron": "^3.0.0",
 		"@types/jest": "^26.0.4",
-		"electron": "^11.5.0",
+		"electron": "^11.3.0",
 		"electron-builder": "^20.44.4",
 		"electron-compilers": "^5.9.0",
 		"electron-context-menu": "^2.5.0",
 		"electron-reload": "^1.5.0",
 		"jest": "^26.1.0",
 		"ts-jest": "^26.1.3",
-		"typescript": "^3.9.10"
+		"typescript": "^3.9.7"
 	},
 	"build": {
 		"asar": true,
@@ -61,7 +60,8 @@
 			},
 			"plugs": [
 				"default",
-				"audio-playback"
+				"audio-playback",
+				"desktop"
 			]
 		},
 		"linux": {
@@ -74,9 +74,9 @@
 				{
 					"target": "deb",
 					"arch": [
-						"ia32",
-						"x64"
-					]
+							"ia32",
+							"x64"
+						]
 				},
 				"snap",
 				"appimage",
