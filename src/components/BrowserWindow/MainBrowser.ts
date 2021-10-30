@@ -87,7 +87,7 @@ export class MainBrowser extends EventEmitter {
     }
     LoadUrl(): void {
         this.win.loadURL("https://web.whatsapp.com/", {
-            userAgent: this.win.webContents.getUserAgent().replace(/(Electron|wazzapp)\/([0-9\.]+)\ /gi, "").replace(/\-(beta|alfa)/gi,"")
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Safari/537.36'
         });
     }
     reload(): void {
