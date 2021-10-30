@@ -4,7 +4,7 @@
 
 ## Features 
 
-0.2.2 Compatibilty with WhatsApp Beta
+0.2.3 Compatibilty with WhatsApp Beta
 
 0.2.1 Disable Shortcuts
 
@@ -51,21 +51,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.2_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.3_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.2_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.3_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.2.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.3.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.2.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.3.x86_64.rpm)
 
 ## How to install
 
