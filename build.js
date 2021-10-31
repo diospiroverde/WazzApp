@@ -29,7 +29,7 @@ async function cleanAndBuildTSC() {
 }
 
 async function init() {
-    await cleanAndBuildTSC();
+    //await cleanAndBuildTSC();
     try{
         await builder.build({
 			
