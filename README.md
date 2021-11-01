@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.2.5 Access to removable media
+
 0.2.4 Support for voice recording via Snap
 
 0.2.3 Compatibilty with WhatsApp Beta
@@ -53,21 +55,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.4_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.5_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.4_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.5_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.4.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.5.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.4.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.5.x86_64.rpm)
 
 ## How to install
 
@@ -84,6 +86,10 @@ $ sudo snap install wazzapp
 To enable voice recording, run the following command:
 ```bash
 $ sudo snap connect wazzapp:audio-record
+```
+To enable access to removable media, run the following command:
+```bash
+$ sudo snap connect wazzapp:removable-media
 ```
 
 ### Debian-based systems (dpkg or apt)
