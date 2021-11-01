@@ -62,6 +62,7 @@
 				"default",
 				"audio-playback",
 				"audio-record",
+				"removable-media",
 				"desktop"
 			]
 		},
