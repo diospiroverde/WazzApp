@@ -8,7 +8,7 @@
 
 0.2.4 Support for voice recording via Snap
 
-0.2.3 Compatibilty with WhatsApp Beta
+0.2.3 Compatibility with WhatsApp Beta
 
 0.2.1 Disable Shortcuts
 
