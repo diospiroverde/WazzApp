@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.2.6 WhatsApp now auto updates when needed
+
 0.2.5 Access to removable media
 
 0.2.4 Support for voice recording via Snap
@@ -55,21 +57,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.5_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.6_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.5_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.6_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.5.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.6.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.5.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.6.x86_64.rpm)
 
 ## How to install
 
