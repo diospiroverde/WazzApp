@@ -4,7 +4,7 @@
 
 ## Features 
 
-0.2.6 WhatsApp now auto updates when needed
+0.2.6 Whatsapp web now auto updates when needed
 
 0.2.5 Access to removable media
 
