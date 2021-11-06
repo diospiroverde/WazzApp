@@ -257,17 +257,17 @@ export class MainBrowser extends EventEmitter {
                         accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+u" : "",
                         click: async () => {
                         Notify({ title: "WazzApp", body: "Marking all messages as unread" });
-                           await this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._3OvU8\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = \'[aria-label*="Mark as unread"]\';for (const message2 of document.querySelectorAll(selector2)) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message2.parentElement, event));}await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);})()}');
+                           await this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._3OvU8\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = document.getElementsByClassName("_2oldI")[4];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(selector2, event));await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);})()}');
                            Notify({ title: "WazzApp", body: "Finished" }); 
                         }
                     },
 
                     {
                         label: 'Archive all',
-                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+f" : "",
+                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+e" : "",
                         click: async () => {
                         Notify({ title: "WazzApp", body: "Archiving all messages" });
-                           await this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._3OvU8\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = \'[aria-label*="Archive chat"]\';for (const message2 of document.querySelectorAll(selector2)) {["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(message2.parentElement, event));}await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);})()}');
+                           await this.win.webContents.executeJavaScript('var checked =  document.getElementById(\'pane-side\');if (typeof(checked) != \'undefined\' && checked != null) { var elem = document.createElement(\'div\');elem.style.cssText = \'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000\';document.body.appendChild(elem);document.getElementById(\'pane-side\').style.overflow = "visible";selector = \'._3OvU8\';messages = (async () => {await timer(1000);for (const message of document.querySelectorAll(selector)) {var evt = message.ownerDocument.createEvent(\'MouseEvents\');var RIGHT_CLICK_BUTTON_CODE = 2;evt.initMouseEvent(\'contextmenu\', true, true,message.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,false, false, false, RIGHT_CLICK_BUTTON_CODE, null);if (document.createEventObject){element.fireEvent(\'onclick\', evt)}else{!message.dispatchEvent(evt);}await timer(300);selector2 = document.getElementsByClassName("_2oldI")[0];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(selector2, event));await timer(300);}document.getElementById(\'pane-side\').style.overflow = "auto";elem.parentNode.removeChild(elem);})()}');
                            Notify({ title: "WazzApp", body: "Finished" }); 
                         }
                     }
@@ -399,13 +399,15 @@ export class MainBrowser extends EventEmitter {
                 this.win.hide();
             }
         });
-
+       
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             //await this.ScriptLoad();
 
-            this.win.webContents.executeJavaScript('const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
-                                      
+           
+            this.win.webContents.executeJavaScript('const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
+            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3"); if(referenceclass.length > 0) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){var updatebutton = elementsofclass[0];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(updatebutton, event))};clearInterval(interval);}}, 1000);')                   
+            
             this.SendConfigs(); 
 
             if(Settings.showFull.value)            
