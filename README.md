@@ -57,21 +57,21 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.7_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.2.8_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.7_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.2.8_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.7.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.2.8.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.7.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.2.8.x86_64.rpm)
 
 ## How to install
 
