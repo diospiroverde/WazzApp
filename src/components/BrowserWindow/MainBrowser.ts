@@ -403,10 +403,9 @@ export class MainBrowser extends EventEmitter {
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             //await this.ScriptLoad();
-
-           
+            
             this.win.webContents.executeJavaScript('const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
-            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3"); if(referenceclass.length > 0) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){var updatebutton = elementsofclass[0];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(updatebutton, event))};clearInterval(interval);}}, 1000);')                   
+            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){var updatebutton = elementsofclass[0];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(updatebutton, event))};clearInterval(interval);}}, 1000);')                   
             
             this.SendConfigs(); 
 
