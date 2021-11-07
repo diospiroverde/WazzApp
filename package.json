@@ -1,9 +1,9 @@
 {
 	"name": "wazzapp",
-	"version": "0.2.6",
-	"betaVersion": "0.2.6",
+	"version": "0.2.7",
+	"betaVersion": "0.2.7",
 	"description": "unofficial whatsapp client for linux ",
-	"main": "electron-build/src/index.js",
+	"main": "main.js",
 	"homepage": "https://github.com/diospiroverde/WazzApp",
 	"scripts": {
 		"start": "electron main.js",
@@ -76,9 +76,9 @@
 				{
 					"target": "deb",
 					"arch": [
-							"ia32",
-							"x64"
-						]
+						"ia32",
+						"x64"
+					]
 				},
 				"snap",
 				"appimage",
