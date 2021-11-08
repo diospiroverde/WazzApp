@@ -1,5 +1,5 @@
 import { ipcMain, BrowserWindow } from 'electron';
-import { electron } from 'node:process';
+import { electron } from 'process';
 import path from 'path';
 import { getSettings } from '../../components/Settings/Settings';
 
