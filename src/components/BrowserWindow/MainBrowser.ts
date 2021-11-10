@@ -388,6 +388,9 @@ export class MainBrowser extends EventEmitter {
           });
     }
 
+    UpdateHeight() : void {
+        this.win.webContents.executeJavaScript('var thisinterval = setInterval(function(){document.getElementsByClassName("_2XcXo")[0].style.height = "" + originalheight + "px";clearInterval(thisinterval)}, 1000);')
+    }
     EventsInit(): void {
         //window events
         this.win.on('page-title-updated', (evt: any, title: string) => {
@@ -414,10 +417,10 @@ export class MainBrowser extends EventEmitter {
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
             //await this.ScriptLoad(); // _3z9_h
-            //this.win.webContents.openDevTools();
+            //this.win.webContents.openDevTools();          
                                                                          
-            this.win.webContents.executeJavaScript('const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
-            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){ var lastclass = document.getElementsByClassName("_2XcXo"); lastclass[0].style.height = "0px"};clearInterval(interval);}}, 1000);');              
+            this.win.webContents.executeJavaScript('var originalheight=0;const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
+            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var originalclass = document.getElementsByClassName("_2XcXo"); if(originalclass.length > 0 && originalheight == 0) { originalheight = originalclass[0].clientHeight; } var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){ var lastclass = document.getElementsByClassName("_2XcXo"); lastclass[0].style.height = "0px"}}}, 1000);');              
                                              
             this.SendConfigs(); 
 
