@@ -48,7 +48,8 @@ export class MainBrowser extends EventEmitter {
             webPreferences: {
                 experimentalFeatures: true,
                 nodeIntegration: false,
-                preload: path.join(path.resolve(__dirname, "..", "..", "scripts"), Settings.batteryWarning.value ? "preloadwarning.js" : "preload.js"),
+                //preload: path.join(path.resolve(__dirname, "..", "..", "scripts"), Settings.batteryWarning.value ? "preloadwarning.js" : "preload.js"),
+                preload: path.join(path.resolve(__dirname, "..", "..", "scripts"), "preloadwarning.js"),
                 spellcheck: Settings.spellCheck.value ? true : false, 
                 /* partition:"persist:main" */
             }
