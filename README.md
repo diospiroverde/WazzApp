@@ -5,6 +5,7 @@
 ## Features 
 
 0.3.1 Updated support for WhatsApp Beta
+
 0.2.6 Whatsapp web now auto updates when needed
 
 0.2.5 Access to removable media
