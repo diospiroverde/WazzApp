@@ -72,7 +72,16 @@ function initEvents(): void {
 
     ipcMain.on('battery-low', (event, arg) => {
         //TODO: Resolver doble notificacion
-        //NotificationSound();        
+        //NotificationSound();      
+        win.UpdateHeight();  
         Notify({title: "WazzApp", body: "Battery Low"});
     })
+
+    ipcMain.on('alert-update', (event, arg) => {
+        //TODO: Resolver doble notificacion
+        //NotificationSound();        
+        win.reload();
+    })
+
+   
 }
