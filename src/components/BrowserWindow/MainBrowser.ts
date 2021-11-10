@@ -20,6 +20,8 @@ const Settings = SettingController.getAllConfigs();
 
 var notificationid = 0;
 var showingSettings;
+//var count = 0;
+
 
 export class MainBrowser extends EventEmitter {
     private win: Electron.BrowserWindow | undefined;
@@ -86,13 +88,21 @@ export class MainBrowser extends EventEmitter {
         return this.win;
     }
     LoadUrl(): void {
+    
+        this.win.webContents.session.clearStorageData({ storages: ["serviceWorkers"] }).then(() => {
         this.win.loadURL("https://web.whatsapp.com/", {
-            userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
-        });
+            userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36'
+        });   
+    });
+
+
     }
     reload(): void {
-        this.LoadUrl();
+  
+       this.LoadUrl();
+    
     }
+  
 
     showSettings() : void {
         if(!showingSettings)
@@ -400,13 +410,15 @@ export class MainBrowser extends EventEmitter {
             }
         });
        
+        var findID;
         //content eventsdark
         this.win.webContents.on('did-finish-load', async () => {
-            //await this.ScriptLoad();
-            
+            //await this.ScriptLoad(); // _3z9_h
+            //this.win.webContents.openDevTools();
+                                                                         
             this.win.webContents.executeJavaScript('const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
-            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){var updatebutton = elementsofclass[0];["mouseover", "mousedown", "mouseup", "click"].map((event) => triggerMouseEvent(updatebutton, event))};clearInterval(interval);}}, 1000);')                   
-            
+            this.win.webContents.executeJavaScript('var interval = setInterval(function(){var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){ var lastclass = document.getElementsByClassName("_2XcXo"); lastclass[0].style.height = "0px"};clearInterval(interval);}}, 1000);');              
+                                             
             this.SendConfigs(); 
 
             if(Settings.showFull.value)            
@@ -435,7 +447,7 @@ export class MainBrowser extends EventEmitter {
 
 
 
-        this.win.webContents.on('will-navigate', this.HandleRedirect)
+        //this.win.webContents.on('will-navigate', this.HandleRedirect)
         this.win.webContents.on('new-window', this.HandleRedirect)
 
         //internal events
@@ -489,7 +501,12 @@ export class MainBrowser extends EventEmitter {
                 
             }
 
-            this.win.reload();
+            this.win.webContents.session.clearStorageData({ storages: ["serviceWorkers"] }).then(() => {
+                this.win.loadURL("https://web.whatsapp.com/", {
+                    userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36'
+                });   
+            });
+            
         })
     }
     SendConfigs(): void {
