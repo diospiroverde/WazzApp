@@ -1,7 +1,7 @@
 {
 	"name": "wazzapp",
-	"version": "0.3.3",
-	"betaVersion": "0.3.3",
+	"version": "0.3.5",
+	"betaVersion": "0.3.5",
 	"description": "unofficial whatsapp client for linux ",
 	"main": "electron-build/src/index.js",
 	"homepage": "https://github.com/diospiroverde/WazzApp",
