@@ -290,14 +290,14 @@ export class MainBrowser extends EventEmitter {
                 submenu: [
                     {
                         label: 'Settings',                        
-                        accelerator: "CommandOrControl+s",                        
+                        accelerator: !Settings.disableShortcuts.value ? "CommandOrControl+s" : "",                 
                         click: () => {
                             this.showSettings() 
                         }
                     },
                     {
                         label: 'Reload',
-                        accelerator: "CommandOrControl+r",
+                        accelerator: !Settings.disableShortcuts.value ?  "CommandOrControl+r" : "",
                         click: () => {
                             this.reload();
                         }
@@ -333,7 +333,7 @@ export class MainBrowser extends EventEmitter {
                 submenu: [
                     {
                         label: 'Toggle Menu',
-                        accelerator: "CommandOrControl+h",
+                        accelerator:  !Settings.disableShortcuts.value ? "CommandOrControl+h" : "",
                         click: _ => {
                             this.win.setMenuBarVisibility(!this.win.isMenuBarVisible())
                             this.win.setAutoHideMenuBar(!this.win.isMenuBarVisible())
