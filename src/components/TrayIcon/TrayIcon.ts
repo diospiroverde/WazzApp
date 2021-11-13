@@ -39,6 +39,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             label: 'Show WazzApp', click: function () {
                 win.show();
             }
+        },
+        {
+            label: 'Toggle Menu bar', click: function () {
+                win.getBrowser().setMenuBarVisibility(!win.getBrowser().isMenuBarVisible());
+            }
         },       
         {
             label: 'Settings', click: function () {
