@@ -26,7 +26,7 @@ body {
 }
 
 .container hr {
-  width: 100%;
+  width: 99%;
 }
 
 .configs {
@@ -125,6 +125,7 @@ body {
   transition: 100ms all;
   background-color: #ffffff;
   color: black;
+  margin-top:5px;
 }
 
 .btn:hover {
