@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.3.6 Chat with numbers not in contact list 
+
 0.3.1 Updated support for WhatsApp Beta
 
 0.2.5 Access to removable media
