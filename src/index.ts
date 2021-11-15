@@ -93,5 +93,11 @@ function initEvents(): void {
             win.showInvalid();
     })
 
+    ipcMain.on('sendwindow-closed', (event, arg) => {
+        //TODO: Resolver doble notificacion
+        //NotificationSound();        
+        win.SendWindowClosed();
+    })
+
    
 }
