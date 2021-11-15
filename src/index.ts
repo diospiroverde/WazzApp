@@ -84,9 +84,21 @@ function initEvents(): void {
         win.reload();
     })
 
+    /*
     ipcMain.on('send-message', (event, arg) => {
         //TODO: Resolver doble notificacion
         //NotificationSound();     
+        if(!isNaN(arg) && arg > 0)   
+            win.NavigateToSendMessage(arg);
+        else
+            win.showInvalid();
+    })
+
+    */
+
+    ipcMain.on('navigate-to-number', (event, arg) => {
+        //TODO: Resolver doble notificacion
+        //NotificationSound();           
         if(!isNaN(arg) && arg > 0)   
             win.NavigateToSendMessage(arg);
         else
