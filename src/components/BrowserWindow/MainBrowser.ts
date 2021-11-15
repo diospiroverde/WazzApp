@@ -7,7 +7,7 @@ import { SendWindow } from "../../windows/SendWindow/SendWindow";
 import { getSettings } from "../Settings/Settings";
 import { SettingConfigInterface, ValueSettings } from "../Settings/SettingInterface";
 import { exec } from "child_process";
-import { collapseTextChangeRangesAcrossMultipleVersions, textSpanIsEmpty } from "typescript";
+import { collapseTextChangeRangesAcrossMultipleVersions, isWhileStatement, textSpanIsEmpty } from "typescript";
 import { executionAsyncId } from "async_hooks";
 import { NotificationSound } from "../../windows/UtilWindow/UtilsWindow";
 import { Notify } from '../../utils/notifications';
@@ -21,6 +21,7 @@ const Settings = SettingController.getAllConfigs();
 
 var notificationid = 0;
 var showingSettings;
+var showingMessage;
 //var count = 0;
 
 
@@ -116,11 +117,19 @@ export class MainBrowser extends EventEmitter {
     }
 
     sendMessage() : void {
-        SendWindow(this.win);
+        if(!showingMessage)
+        {
+            showingMessage = true;
+            SendWindow(this.win);
+        }
     }
 
     settingsClosed() : void {
         showingSettings = false;
+    }
+
+    SendWindowClosed() : void {
+        showingMessage = false;
     }
 
    
@@ -408,6 +417,8 @@ export class MainBrowser extends EventEmitter {
 
     showInvalid() : void
     {
+        this.win.focus();
+        
         const options = {
             type: 'info',
             buttons: ['OK'],
@@ -422,6 +433,7 @@ export class MainBrowser extends EventEmitter {
         const response = dialog.showMessageBox(this.win, options).then( (data) => {
                                     
           });
+        
     }
 
     UpdateHeight() : void {
