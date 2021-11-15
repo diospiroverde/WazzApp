@@ -19,13 +19,23 @@ export function SendWindow(win: BrowserWindow) {
     })
     window.setMenu(null);
 
+    ipcMain.addListener('send-message', (event, arg) => {
+    
+        ipcMain.emit('navigate-to-number', {}, arg);
+      
+       })
+
+
     window.once("close", () => {     
         ipcMain.emit('sendwindow-closed');
-        window = undefined;        
+        window = undefined;  
+        ipcMain.removeAllListeners('send-message');      
     })
 
-    ipcMain.once("send-message", (event, arg) => {              
+    ipcMain.once("send-message", (event, arg) => {     
+        if(window)         
         window.close();
+       
     })
   
     if(process.env.DEBUG){
