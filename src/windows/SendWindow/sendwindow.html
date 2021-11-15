@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Send Message</title>
+<style> 
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    label {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    button {
+        font-size: 20px;
+    }
+    </style>
+</head>
+<body background="utils.jpg">
+
+<script type="text/javascript">
+    const { ipcRenderer } = require('electron')
+ 
+
+    function send()
+    {       
+        var text = document.getElementById('inputphonenumber').value;
+        ipcRenderer.send('send-message',text);
+    }
+
+    window.onload = function() {
+    var input = document.getElementById("inputphonenumber");
+
+    input.addEventListener("keyup", function(event) {
+   
+    if (event.keyCode === 13) {
+            send();
+    }
+    })};
+
+</script>
+
+  <label for="phonenumber" style="margin-top:10px">Enter phone number with country code (ex: +351xxxxxxxxx)</label>
+  <input type="text" id="inputphonenumber" style="margin-bottom:10px" value="+">
+  
+  <button onclick="send();">Start Chat</button>
+</body>
+</html>
