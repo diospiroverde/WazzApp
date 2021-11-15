@@ -19,6 +19,11 @@ export function SendWindow(win: BrowserWindow) {
     })
     window.setMenu(null);
 
+    window.once("close", () => {     
+        ipcMain.emit('sendwindow-closed');
+        window = undefined;        
+    })
+
     ipcMain.once("send-message", (event, arg) => {              
         window.close();
     })
