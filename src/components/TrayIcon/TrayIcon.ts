@@ -51,6 +51,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
             }
         },
         {
+            label: 'New Chat', click: function () {
+                win.sendMessage();
+            }
+        },
+        {
             label: 'Reload', click: function () {
                 win.LoadUrl();
             }
@@ -83,6 +88,11 @@ export function TrayIcon(win:MainBrowser,app:Electron.App):Electron.Tray | undef
         {
             label: 'Settings', click: function () {
                 win.showSettings();
+            }
+        },
+        {
+            label: 'New Chat', click: function () {
+                win.sendMessage();
             }
         },
         {
