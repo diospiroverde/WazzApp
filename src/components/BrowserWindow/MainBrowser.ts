@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { EventEmitter } from 'events';
 import { SettingWindow } from "../../windows/SettingsWindow/SettingsWindow";
+import { SendWindow } from "../../windows/SendWindow/SendWindow";
 import { getSettings } from "../Settings/Settings";
 import { SettingConfigInterface, ValueSettings } from "../Settings/SettingInterface";
 import { exec } from "child_process";
@@ -114,10 +115,26 @@ export class MainBrowser extends EventEmitter {
         }
     }
 
+    sendMessage() : void {
+        SendWindow(this.win);
+    }
+
     settingsClosed() : void {
         showingSettings = false;
     }
+
    
+    NavigateToSendMessage(text): void {
+    
+        this.win.webContents.session.clearStorageData({ storages: ["serviceWorkers"] }).then(() => {
+        this.win.loadURL("https://web.whatsapp.com/send?phone=" + text, {
+            userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36'
+        });   
+    });
+
+
+    }
+
     CloseNotification(): void {
         
         try
@@ -386,6 +403,24 @@ export class MainBrowser extends EventEmitter {
             {
                 shell.openExternal('https://www.paypal.com/paypalme/diospiroverde');
             }                  
+          });
+    }
+
+    showInvalid() : void
+    {
+        const options = {
+            type: 'info',
+            buttons: ['OK'],
+            defaultId: 2,
+            title: 'Error',
+            message: 'Invalid Number',
+            icon: path.resolve(__dirname, "..","..","icon", "logo.png")                 
+          
+          };
+
+        const { dialog } = require('electron')
+        const response = dialog.showMessageBox(this.win, options).then( (data) => {
+                                    
           });
     }
 
