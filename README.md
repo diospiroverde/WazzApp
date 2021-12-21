@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.3.9 Improved compatibilty with themes 
+
 0.3.7 Chat with numbers not in contact list 
 
 0.3.1 Updated support for WhatsApp Beta
