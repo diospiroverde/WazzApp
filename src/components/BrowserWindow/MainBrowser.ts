@@ -469,7 +469,7 @@ export class MainBrowser extends EventEmitter {
                                                                          
             this.win.webContents.executeJavaScript('var originalheight=0;const triggerMouseEvent = (node, eventType) => {var clickEvent = document.createEvent("MouseEvents");clickEvent.initEvent(eventType, true, true);node.dispatchEvent(clickEvent);};var timer = (ms) => {return new Promise((res) => setTimeout(res, ms));};');
             this.win.webContents.executeJavaScript('var interval = setInterval(function(){var originalclass = document.getElementsByClassName("_2XcXo"); if(originalclass.length > 0 && originalheight == 0) { originalheight = originalclass[0].clientHeight; } var referenceclass = document.getElementsByClassName("_26lC3");if(referenceclass.length > 0 && document.body.innerHTML.search("alert-battery") == -1) {var elementsofclass = document.getElementsByClassName("_3jR9Y");if (elementsofclass.length > 0){ var lastclass = document.getElementsByClassName("_2XcXo"); lastclass[0].style.height = "0px"}}}, 1000);');              
-            this.win.webContents.executeJavaScript("setInterval(function(){console.log('test');var d = document.getElementsByClassName('nBIOd'); if(d.length > 0) { d[0].style.cssText = '';}},100)");
+            this.win.webContents.executeJavaScript("setInterval(function(){console.log('test');var d = document.getElementsByClassName('nBIOd'); if(d.length > 0) { d[0].style.cssText = '';}},1000)");
             
             this.SendConfigs(); 
 
