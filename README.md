@@ -81,7 +81,7 @@
 
 ![image](https://lx-dynamics.com/arch.png)
 
-[Arch Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.3.9-1-x86_64.pkg.tar.zst)
+[Pacman Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.3.9-1-x86_64.pkg.tar.zst)
 
 ## How to install
 
