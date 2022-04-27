@@ -63,27 +63,27 @@
 
 ![image](https://lx-dynamics.com/debian.png)
 
-[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.3.9_amd64.deb)
+[Debian Package (64-bit)](https://lx-dynamics.com/wazzapp_0.4.2_amd64.deb)
 
-[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.3.9_i386.deb)
+[Debian Package (32-bit)](https://lx-dynamics.com/wazzapp_0.4.2_i386.deb)
 
 ### Application Image  
 
 ![image](https://lx-dynamics.com/appimage.png)
 
-[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.3.9.AppImage)
+[WazzApp Application Image](https://lx-dynamics.com/wazzapp-0.4.2.AppImage)
 
 ### RHEL, CentOS (RPM package) 
 
 ![image](https://lx-dynamics.com/redhat.png)
 
-[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.3.9.x86_64.rpm)
+[RPM Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.4.2.x86_64.rpm)
 
 ### Arch Linux, Manjaro (pacman) 
 
 ![image](https://lx-dynamics.com/archlinux.png)
 
-[Pacman Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.3.9-1-x86_64.pkg.tar.zst)
+[Pacman Package (32/64-bit)](https://lx-dynamics.com/wazzapp-0.4.2.pacman)
 
 ## How to install
 
