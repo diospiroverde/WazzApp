@@ -4,6 +4,8 @@
 
 ## Features 
 
+0.4.2 Added disable hardware acceleration option from command line.
+
 0.3.9 Improved compatibilty with themes 
 
 0.3.7 Chat with numbers not in contact list 
