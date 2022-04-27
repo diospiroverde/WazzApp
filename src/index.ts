@@ -20,8 +20,8 @@ process.title = envConfig.name;
 
 if(app.commandLine.hasSwitch('disable-gpu'))
 {
-app.disableHardwareAcceleration();
-console.log('GPU Disabled');
+    app.disableHardwareAcceleration();
+    console.log('GPU Disabled');
 }
 
 app.on("ready", _ => {
