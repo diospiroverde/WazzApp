@@ -18,6 +18,12 @@ let SettingsController = getSettings();
 //Process name
 process.title = envConfig.name;
 
+if(app.commandLine.hasSwitch('disable-gpu'))
+{
+app.disableHardwareAcceleration();
+console.log('GPU Disabled');
+}
+
 app.on("ready", _ => {
     
     win = new MainBrowser(app);
