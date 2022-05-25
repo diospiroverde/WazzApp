@@ -1,3 +1,5 @@
+## NO LONGER UNDER ACTIVE DEVELOPMENT ##
+
 ## WazzApp | Unofficial Client of WhatsApp for Linux
 
 ![image](https://lx-dynamics.com/wazzap.png)
